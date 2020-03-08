@@ -31,7 +31,7 @@ class iudx:
 		result = {}
 
 		for i in items:
-			url = catalog + i 
+			url = catalog + i
 
 			response = requests.get(url=url,verify=True)
 
@@ -45,7 +45,7 @@ class iudx:
 					response.text
 				)
 
-				result[i] = None 
+				result[i] = None
 
 		return result
 
@@ -59,7 +59,7 @@ class iudx:
 
 		result = {}
 
-		metadata = iudx.get_metadata(items) 
+		metadata = iudx.get_metadata(items)
 
 		for i in items:
 			split = i.split("/")
@@ -75,7 +75,7 @@ class iudx:
 
 			if token:
 				body["token"]		= token
-				body["server-token"]	= server_token[rs] 
+				body["server-token"]	= server_token[rs]
 
 			body = json.dumps(body)
 			response = requests.post(url=url,verify=True,data=body)
@@ -169,11 +169,14 @@ class iudx:
 			body = {'policy': policy}
 			return self.call("acl/append", body)
 
-		def introspect_token(self, token, server_token=None):
+		def introspect_token(self, token, server_token=None, request = None):
 			body = {'token': token}
 
 			if server_token:
             			body['server-token'] = server_token
+
+			if request:
+            			body['request'] = request
 
 			return self.call("token/introspect", body)
 
