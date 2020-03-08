@@ -68,7 +68,7 @@ class iudx:
 			response = requests.post(url=url,verify=True,data=body)
 
 			if response.status_code == 200:
-				result[i] = json.loads(response.text)
+				result[i] = json.loads(response.text)[0]
 			else:
 				sys.stderr.write (
 					"WARNING: resource-server API failure  | " +
