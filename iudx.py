@@ -6,6 +6,11 @@ catalog_of_catalogs = "varanasi.iudx.org.in" # should be "catalogue.iudx.org.in"
 
 class iudx:
 #
+	def search(options =  {}, catalog = catalog_of_catalogs):
+		catalog = "https://" + catalog + "/catalogue/v1/search"
+		response = requests.get(catalog)
+		return json.loads(response.text)
+
 	def get_metadata(items, catalog = catalog_of_catalogs):
 
 		if type(items) == type("string"):
