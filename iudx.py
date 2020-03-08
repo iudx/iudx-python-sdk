@@ -128,7 +128,23 @@ class iudx:
             				)
 					return {'success':False, 'response':None}
 
-		def get_token(self, request, token_time=None, existing_token=None):
+		def get_token(self, items, token_time=None, existing_token=None):
+
+			body = {'request': {}}
+
+			for i in items:
+				body["request"]["resource-id"] = i
+
+			if token_time:
+				body['token-time'] = token_time
+
+			if existing_token:
+				body['existing-token'] = existing_token
+
+			return self.call("token", body)
+
+		def get_token_complex (self, request, token_time=None, existing_token=None):
+
 			body = {'request': request}
 
 			if token_time:
@@ -177,7 +193,7 @@ class iudx:
 
 			return self.call("token/revoke", body)
 
-		def revoke_all(self, serial, fingerprint):
+		def revoke_all_tokens (self, serial, fingerprint):
 			body = {'serial':serial, 'fingerprint': fingerprint}
 			return self.call("token/revoke-all", body)
 
