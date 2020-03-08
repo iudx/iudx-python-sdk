@@ -12,11 +12,13 @@ class iudx:
 		else:
 			self.credentials = None
 
+	@staticmethod
 	def search(options =  {}, catalog = catalog_of_catalogs):
 		catalog = "https://" + catalog + "/catalogue/v1/search"
 		response = requests.get(catalog)
 		return json.loads(response.text)
 
+	@staticmethod
 	def get_metadata(items, catalog = catalog_of_catalogs):
 
 		if type(items) == type("string"):
@@ -47,6 +49,7 @@ class iudx:
 
 		return result
 
+	@staticmethod
 	def get_latest_data(items, token = None, server_token = None):
 
 		if type(items) == type("string"):
