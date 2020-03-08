@@ -2,9 +2,11 @@ import sys
 import json
 import requests
 
+catalog_of_catalogs = "varanasi.iudx.org.in" # should be "catalogue.iudx.org.in"
+
 class iudx:
 #
-	def get_metadata(items, catalog = "varanasi.iudx.org.in"):
+	def get_metadata(items, catalog = catalog_of_catalogs):
 
 		if type(items) == type("string"):
 			items = [items]
@@ -34,7 +36,7 @@ class iudx:
 
 		return result
 
-	def get_latest_data(items,certificate = None, key = None):
+	def get_latest_data(items, certificate = None, key = None):
 
 		if type(items) == type("string"):
 			items = [items]
@@ -59,6 +61,8 @@ class iudx:
 				"id" : i,
 				"options" : "latest"
 			}
+
+			# TODO check if this item requires a token !
 
 			body = json.dumps(body)
 			response = requests.post(url=url,verify=True,data=body)
