@@ -1,0 +1,6 @@
+setup.py
+iudx.egg-info/PKG-INFO
+iudx.egg-info/SOURCES.txt
+iudx.egg-info/dependency_links.txt
+iudx.egg-info/requires.txt
+iudx.egg-info/top_level.txt
