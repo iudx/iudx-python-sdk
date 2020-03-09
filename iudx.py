@@ -19,6 +19,16 @@ class iudx:
 		return json.loads(response.text)
 
 	@staticmethod
+	def search_count(options =  {}, catalog = catalog_of_catalogs):
+		catalog = "https://" + catalog + "/catalogue/v1/count"
+
+		try:
+			response = requests.get(catalog)
+			return json.loads(response.text)["Count"]
+		except:
+			return -1
+
+	@staticmethod
 	def get_metadata(items, catalog = catalog_of_catalogs):
 
 		if type(items) == type("string"):
