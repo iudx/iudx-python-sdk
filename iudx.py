@@ -2,7 +2,7 @@ import sys
 import json
 import requests
 
-catalog_of_catalogs = "varanasi.iudx.org.in" # should be "catalogue.iudx.org.in"
+catalog_of_catalogs = "catalogue.iudx.org.in"
 
 class iudx:
 #{
@@ -143,7 +143,7 @@ class iudx:
 			body = {'request': {}}
 
 			for i in items:
-				body["request"]["resource-id"] = i
+				body["request"]["id"] = i
 
 			if token_time:
 				body['token-time'] = token_time
