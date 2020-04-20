@@ -171,6 +171,9 @@ class iudx:
 		def get_policy(self):
 			return self.call("acl")
 
+		def revert_policy(self):
+			return self.call("acl/revert")
+
 		def set_policy(self, policy):
 			body = {'policy': policy}
 			return self.call("acl/set", body)
